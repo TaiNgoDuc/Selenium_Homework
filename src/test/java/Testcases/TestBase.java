@@ -1,6 +1,7 @@
 package Testcases;
 
 import Common.Constant;
+import Common.Log;
 import Common.WebDriverUtils;
 import com.opencsv.CSVReader;
 import org.testng.annotations.*;
@@ -16,7 +17,7 @@ public class TestBase {
 
     @BeforeSuite
     @Parameters("browser")
-    public void beforeSuite(String browserName){
+    public void beforeSuite(@Optional("chrome") String browserName){
         Constant.BROWSER = browserName;
     }
 
@@ -24,11 +25,15 @@ public class TestBase {
     public void setUp() {
         WebDriverUtils.init();
         WebDriverUtils.navigate(Constant.HOME_PAGE_URL);
+
+        Log.info("Navigate to Railway Website");
     }
 
     @AfterMethod
     public void tearDown() {
         WebDriverUtils.quitBrowser();
+
+        Log.info("Exit Railway Website");
 
     }
 

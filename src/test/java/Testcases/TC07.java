@@ -1,5 +1,6 @@
 package Testcases;
 
+import Common.Log;
 import PageObjects.GenerateData;
 import PageObjects.HomePage;
 import PageObjects.QAPage;
@@ -17,6 +18,8 @@ public class TC07 extends TestBase {
         qaPage.open();
         qaPage.moveToRegisterTab();
 
+        Log.info("Go to Register page");
+
         String email = GenerateData.generateRandomEmail(dataCsv[0].toString());
         String password = dataCsv[1].toString();
         String confirmPassword = dataCsv[2].toString();
@@ -24,7 +27,7 @@ public class TC07 extends TestBase {
 
         registerPage.register(email, password, confirmPassword, pid);
 
-        System.out.print("Register with valid information");
+        Log.info("Register account");
 
 
 

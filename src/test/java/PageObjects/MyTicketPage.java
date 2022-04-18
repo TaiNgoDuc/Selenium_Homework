@@ -16,7 +16,6 @@ public class MyTicketPage extends BasePage {
         Constant.DRIVER.switchTo().alert().accept();
 
         return new MyTicketPage();
-
     }
 
 }

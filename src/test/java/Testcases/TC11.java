@@ -1,5 +1,6 @@
 package Testcases;
 
+import Common.Log;
 import PageObjects.QAPage;
 import PageObjects.RegisterPage;
 import org.testng.Assert;
@@ -15,9 +16,13 @@ public class TC11 extends TestBase {
         qaPage.open();
         qaPage.moveToRegisterTab();
 
+        Log.info("Go to Register page");
+
         String email = dataCsv[0].toString();
 
         registerPage.register(email, "", "", "");
+
+        Log.info("Register account");
 
         String actualMsg1 = registerPage.setErrorRegister();
         String expectedMsg1 = "There're errors in the form. Please correct the errors and try again.";
@@ -34,8 +39,6 @@ public class TC11 extends TestBase {
         String expectedMsg3 = "Invalid ID length";
 
         Assert.assertEquals(actualMsg3, expectedMsg3);
-
-        System.out.print("Register with only email");
 
     }
 }

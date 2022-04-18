@@ -1,6 +1,7 @@
 package Testcases;
 
 import Common.Constant;
+import Common.Log;
 import PageObjects.*;
 import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
@@ -20,12 +21,17 @@ public class TC15 extends TestBase {
 
         homePage.moveToRegisterTab();
 
+        Log.info("Go to Register page");
+
         String email = GenerateData.generateRandomEmail(dataCsv[0].toString());
         String password = dataCsv[1].toString();
         String confirmPassword = dataCsv[2].toString();
         String pid = dataCsv[3].toString();
 
         registerPage.register(email, password, confirmPassword, pid);
+
+        Log.info("Register account");
+
         homePage.gotoLoginPage();
 
         JavascriptExecutor js = (JavascriptExecutor) Constant.DRIVER;
@@ -33,13 +39,18 @@ public class TC15 extends TestBase {
 
         loginPage.login(email, password);
 
+        Log.info("Login with valid email");
+
         homePage.moveToTimetableTab();
+
+        Log.info("Go to Timetable page");
 
         JavascriptExecutor js1 = (JavascriptExecutor) Constant.DRIVER;
         js1.executeScript("arguments[0].scrollIntoView()", timetablePage.getBtnCheckPrice());
 
         timetablePage.checkPrice();
 
+        Log.info("Check price of Da Nang to Sai Gon trip");
 
         String actualMsg1 = ticketPricePage.setLblPriceHS();
         String expectedMsg1 = "310000";
@@ -71,7 +82,5 @@ public class TC15 extends TestBase {
 
         Assert.assertEquals(actualMsg6, expectedMsg6);
 
-
-        System.out.print("Check price of Da Nang to Sai Gon trip ");
     }
 }

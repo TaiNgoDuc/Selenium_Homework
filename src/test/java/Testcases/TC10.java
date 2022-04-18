@@ -1,5 +1,6 @@
 package Testcases;
 
+import Common.Log;
 import PageObjects.GenerateData;
 import PageObjects.HomePage;
 import PageObjects.QAPage;
@@ -17,6 +18,8 @@ public class TC10 extends TestBase {
         qaPage.open();
         qaPage.moveToRegisterTab();
 
+        Log.info("Go to Register page");
+
         String email = dataCsv[0].toString();
         String password = dataCsv[1].toString();
         String confirmPassword = dataCsv[2].toString();
@@ -29,7 +32,7 @@ public class TC10 extends TestBase {
 
         Assert.assertEquals(actualMsg, expectedMsg);
 
-        System.out.print("Register with used email");
+        Log.info("Register account of Railway website");
 
 
     }

@@ -1,6 +1,7 @@
 package Testcases;
 
 import Common.Constant;
+import Common.Log;
 import PageObjects.HomePage;
 import PageObjects.LoginPage;
 import org.openqa.selenium.JavascriptExecutor;
@@ -21,7 +22,7 @@ public class TC02 extends TestBase {
 
         String actualMsg = loginPage.login(null, Constant.PASSWORD).getErrorMessage();
 
-        System.out.print("Login with blank email field and valid password ");
+        Log.info("Login to Railway website");
 
         String expectedMsg = "Invalid username or password. Please try again.";
 

@@ -1,6 +1,7 @@
 package Testcases;
 
 import Common.Constant;
+import Common.Log;
 import PageObjects.*;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
@@ -18,20 +19,30 @@ public class TC14 extends TestBase {
 
         homePage.moveToRegisterTab();
 
+        Log.info("Go to Register page");
+
         String email = GenerateData.generateRandomEmail(dataCsv[0].toString());
         String password = dataCsv[1].toString();
         String confirmPassword = dataCsv[2].toString();
         String pid = dataCsv[3].toString();
 
         registerPage.register(email, password, confirmPassword, pid);
+        Log.info("Register account");
+
         homePage.gotoLoginPage();
+
+        Log.info("Go to Login page");
 
         JavascriptExecutor js = (JavascriptExecutor) Constant.DRIVER;
         js.executeScript("arguments[0].scrollIntoView()", loginPage.getBtnLogin());
 
         loginPage.login(email, password);
 
+        Log.info("Login with created account");
+
         homePage.moveToBookTicketTab();
+
+        Log.info("Go to Book ticket page");
 
         String departDate = dataCsv[4].toString();
         String departFrom = dataCsv[5].toString();
@@ -45,6 +56,6 @@ public class TC14 extends TestBase {
 
         bookTicketPage.bookTicket(departDate, departFrom, arriveAt, seatType, ticketAmount);
 
-        System.out.print("Book ticket with valid data");
+        Log.info("Book a ticket with information of csv data");
     }
 }

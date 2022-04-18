@@ -1,6 +1,7 @@
 package Testcases;
 
 import Common.Constant;
+import Common.Log;
 import PageObjects.*;
 import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
@@ -20,7 +21,11 @@ public class TC16 extends TestBase {
 
         homePage.moveToQATab();
 
+        Log.info("Go to QA page");
+
         qaPage.moveToRegisterTab();
+
+        Log.info("Go to Register page");
 
         String email = GenerateData.generateRandomEmail(dataCsv[0].toString());
         String password = dataCsv[1].toString();
@@ -28,13 +33,23 @@ public class TC16 extends TestBase {
         String pid = dataCsv[3].toString();
 
         registerPage.register(email, password, confirmPassword, pid);
+
+        Log.info("Register account");
+
         homePage.gotoLoginPage();
+
+        Log.info("Go to Login page");
 
         JavascriptExecutor js = (JavascriptExecutor) Constant.DRIVER;
         js.executeScript("arguments[0].scrollIntoView()", loginPage.getBtnLogin());
+
         loginPage.login(email, password);
 
+        Log.info("Login with created information");
+
         homePage.moveToBookTicketTab();
+
+        Log.info("Go to Book Ticket page");
 
         String departDate = dataCsv[4].toString();
         String departFrom = dataCsv[5].toString();
@@ -44,14 +59,17 @@ public class TC16 extends TestBase {
 
         bookTicketPage.bookTicket(departDate, departFrom, arriveAt, seatType, ticketAmount);
 
+        Log.info("Book a ticket with csv's data");
+
         bookTicketPage.moveToMyTicketTab();
+
+        Log.info("Go to My Ticket page");
 
         myTicketPage.pressBtnCancel();
 
+        Log.info("Cancel ticket");
+
         Thread.sleep(3);
-
-        System.out.print("Cancel a ticket");
-
 
     }
 

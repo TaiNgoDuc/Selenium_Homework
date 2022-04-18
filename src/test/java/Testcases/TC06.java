@@ -1,6 +1,7 @@
 package Testcases;
 
 import Common.Constant;
+import Common.Log;
 import PageObjects.ContactPage;
 import PageObjects.LoginPage;
 import PageObjects.QAPage;
@@ -15,6 +16,8 @@ public class TC06 extends TestBase {
         QAPage qaPage = new QAPage();
         qaPage.open();
 
+        Log.info("Go to QA page");
+
         LoginPage loginPage = qaPage.gotoLoginPage();
 
         JavascriptExecutor js = (JavascriptExecutor) Constant.DRIVER;
@@ -22,14 +25,16 @@ public class TC06 extends TestBase {
 
         loginPage.login2(Constant.USERNAME, Constant.PASSWORD);
 
-        System.out.print("Login with valid account");
+        Log.info("Login to Railway website");
 
         loginPage.moveToContactTab();
+
+        Log.info("Go to Contact page");
 
         ContactPage contactPage = new ContactPage();
         contactPage.logoutPage();
 
-        System.out.print("Logout account");
+        Log.info("Logout Page");
 
     }
 }

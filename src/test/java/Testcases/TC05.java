@@ -1,6 +1,7 @@
 package Testcases;
 
 import Common.Constant;
+import Common.Log;
 import PageObjects.LoginPage;
 import PageObjects.QAPage;
 import org.openqa.selenium.JavascriptExecutor;
@@ -13,6 +14,8 @@ public class TC05 extends TestBase {
         QAPage qaPage = new QAPage();
         qaPage.open();
 
+        Log.info("Go to QA page");
+
         for (int i = 0; i< 3; i++) {
 
             LoginPage loginPage = qaPage.gotoLoginPage();
@@ -21,9 +24,9 @@ public class TC05 extends TestBase {
             js.executeScript("arguments[0].scrollIntoView()", loginPage.getBtnLogin());
 
             loginPage.login2(Constant.USERNAME, null);
-        }
 
-        System.out.print("Login with valid username and blank password field for several time");
+            Log.info("Login to Railway page");
+        }
 
     }
 }
