@@ -24,6 +24,8 @@ public class TC07 extends TestBase {
 
         registerPage.register(email, password, confirmPassword, pid);
 
+        System.out.print("Register with valid information");
+
 
 
     }

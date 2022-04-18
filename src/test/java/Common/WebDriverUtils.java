@@ -12,7 +12,7 @@ public class WebDriverUtils {
             case "chrome":
                 System.setProperty("webdriver.chrome.driver", "Executables/Driver/chromedriver.exe");
                 Constant.DRIVER = new ChromeDriver();
-                Constant.DRIVER.manage().window().maximize();
+//                Constant.DRIVER.manage().window().maximize();
                 break;
             case "firefox":
                 System.setProperty("webdriver.chrome.driver", "Executables/Driver/geckodriver.exe");

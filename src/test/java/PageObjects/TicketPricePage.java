@@ -29,7 +29,6 @@ public class TicketPricePage extends BasePage {
     public WebElement getLblPriceSBC() { return Constant.DRIVER.findElement(_lblPriceSBC); }
 
 
-
     public void checkPrice() {
         getLnkCheckPrice().click();
     }

@@ -50,7 +50,7 @@ public class TC16 extends TestBase {
 
         Thread.sleep(3);
 
-
+        System.out.print("Cancel a ticket");
 
 
     }

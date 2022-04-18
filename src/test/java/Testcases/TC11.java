@@ -35,5 +35,7 @@ public class TC11 extends TestBase {
 
         Assert.assertEquals(actualMsg3, expectedMsg3);
 
+        System.out.print("Register with only email");
+
     }
 }

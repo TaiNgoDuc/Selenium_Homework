@@ -14,7 +14,7 @@ public class TC14 extends TestBase {
     LoginPage loginPage = new LoginPage();
 
     @Test(dataProvider = "dataLogin")
-    public void TC01(Object[] dataCsv) {
+    public void TC01(Object[] dataCsv) throws InterruptedException {
 
         homePage.moveToRegisterTab();
 
@@ -25,6 +25,10 @@ public class TC14 extends TestBase {
 
         registerPage.register(email, password, confirmPassword, pid);
         homePage.gotoLoginPage();
+
+        JavascriptExecutor js = (JavascriptExecutor) Constant.DRIVER;
+        js.executeScript("arguments[0].scrollIntoView()", loginPage.getBtnLogin());
+
         loginPage.login(email, password);
 
         homePage.moveToBookTicketTab();
@@ -34,9 +38,13 @@ public class TC14 extends TestBase {
         String arriveAt = dataCsv[6].toString();
         String seatType = dataCsv[7].toString();
         String ticketAmount = dataCsv[8].toString();
-//        JavascriptExecutor js = (JavascriptExecutor) Constant.DRIVER;
-//        js.executeScript("arguments[0].scrollIntoView()", bookTicketPage.getBtnBookTicket());
+
+        Thread.sleep(2);
+        JavascriptExecutor js1 = (JavascriptExecutor) Constant.DRIVER;
+        js1.executeScript("arguments[0].scrollIntoView()", bookTicketPage.getBtnBookTicket());
 
         bookTicketPage.bookTicket(departDate, departFrom, arriveAt, seatType, ticketAmount);
+
+        System.out.print("Book ticket with valid data");
     }
 }

@@ -29,6 +29,8 @@ public class TC10 extends TestBase {
 
         Assert.assertEquals(actualMsg, expectedMsg);
 
+        System.out.print("Register with used email");
+
 
     }
 }

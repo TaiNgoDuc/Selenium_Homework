@@ -33,8 +33,6 @@ public class TC15 extends TestBase {
 
         loginPage.login(email, password);
 
-
-
         homePage.moveToTimetableTab();
 
         JavascriptExecutor js1 = (JavascriptExecutor) Constant.DRIVER;
@@ -74,5 +72,6 @@ public class TC15 extends TestBase {
         Assert.assertEquals(actualMsg6, expectedMsg6);
 
 
+        System.out.print("Check price of Da Nang to Sai Gon trip ");
     }
 }
